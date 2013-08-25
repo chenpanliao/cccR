@@ -1,4 +1,5 @@
-interp1 <- function(
+interp1 <-
+function(
 
 	x,
 	y,

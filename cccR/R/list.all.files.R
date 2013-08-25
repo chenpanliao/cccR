@@ -1,4 +1,5 @@
-getAllNonDictFiles <- function(
+list.all.files <-
+function(
 
 	path = "."
 

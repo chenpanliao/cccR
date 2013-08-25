@@ -1,4 +1,5 @@
-intergral <- function (
+intergral <-
+function (
   x, y
 ) {
 
@@ -49,8 +50,3 @@ intergral <- function (
   return (area)
   
 }
-
-# usage
-x <- sample(c(1,2,3,5,7,NA))
-y <- x*2
-intergral(x,y)
