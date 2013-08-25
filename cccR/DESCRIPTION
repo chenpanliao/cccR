@@ -1,9 +1,9 @@
 Package: cccR
 Type: Package
-Title: What the package does (short line)
-Version: 1.0
+Title: Color contrast calculator with R
+Version: 0.1
 Date: 2013-08-26
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Chen-Pan Liao
+Maintainer: Chen-Pan Liao <andrew.43@gmail.com>
+Description: A R package focus on color contrast calculator for behavioral ecologist
+License: GPL 3+

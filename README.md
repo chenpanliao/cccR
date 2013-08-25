@@ -1,4 +1,4 @@
 cccR
 ====
 
-Color contrast calculator for behavioral ecology with R
+A R package focus on color contrast calculator for behavioral ecologist
