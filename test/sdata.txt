@@ -1,0 +1,45 @@
+
+
+
+中文在此
+
+SpectraSuite Data File
+++++++++++++++++++++++++++++++++++++
+Date: Tue Jun 26 11:04:51 CST 2012
+User: Administrator
+Dark Spectrum Present: Yes
+Reference Spectrum Present: Yes
+Number of Sampled Component Spectra: 1
+Spectrometers: USB4F05559
+Integration Time (usec): 48000 (USB4F05559)
+Spectra Averaged: 5 (USB4F05559)
+Boxcar Smoothing: 5 (USB4F05559)
+Correct for Electrical Dark: No (USB4F05559)
+Strobe/Lamp Enabled: No (USB4F05559)
+Correct for Detector Non-linearity: No (USB4F05559)
+Correct for Stray Light: No (USB4F05559)
+Number of Pixels in Processed Spectrum: 3648
+>>>>>Begin Processed Spectral Data<<<<<
+176.64	-48.718
+176.86	-48.718
+177.08	-48.718
+ 	,	;	177.30 	,	;	55.319 	,	;	
+177.52	750.000
+177.74	-692.784
+177.96	6190.909
+178.18	926.744
+178.40	458.095
+178.62	420.816
+891.56	10.102
+891.73	10.020
+891.90	10.750
+892.06	10.003
+892.23	9.882
+892.40	9.886
+ 	,	;	177.30 	,	;	
+>>>>>End Processed Spectral Data<<<<<
+ 	,	;	177.30 	,	;	
+1 2
+
+2.225074e-308 -2.225074E+18
+
