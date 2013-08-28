@@ -1,5 +1,5 @@
-\name{read.spectrum}
-\alias{read.spectrum}
+\name{read.spectrum.file}
+\alias{read.spectrum.file}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 %%  ~~function to do ... ~~
@@ -8,7 +8,7 @@
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-read.spectrum(fileToRead, encoding = "UTF-8", cols = 2, pattern.blank = "[[:blank:],;]", pattern.num = "([-]?[0-9]+[.]?[0-9]*[Ee]*[+-]*[0-9]{0,5})")
+read.spectrum.file(fileToRead, encoding = "UTF-8", cols = 2, pattern.blank = "[[:blank:],;]", pattern.num = "([-]?[0-9]+[.]?[0-9]*[Ee]*[+-]*[0-9]{0,5})")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
