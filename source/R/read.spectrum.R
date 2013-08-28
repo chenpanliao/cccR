@@ -1,4 +1,5 @@
-read.spectrum <- function (
+read.spectrum <-
+function (
 	fileToRead,
 	encoding = "UTF-8",
 	cols = 2,
@@ -6,21 +7,22 @@ read.spectrum <- function (
 	pattern.num = "([-]?[0-9]+[.]?[0-9]*[Ee]*[+-]*[0-9]{0,5})"
 ) {
 
-	# input
+	# input file as a string
 	con <- file(fileToRead, "r", blocking = FALSE, encoding = encoding)
 	readLines(con) -> strdata
 	close(con)
 
-  # create pattern according to pattern.blank and pattern.num
+	# create pattern according to pattern.blank and pattern.num
 	pattern.row <- paste(
 		sprintf("^%s*", pattern.blank),
 		paste(
-			rep(pattern.num, cols) ,
-			sep="", 
+			rep(pattern.num, cols),
+			sep="",
 			collapse=sprintf("%s+", pattern.blank)
 		),
 		sprintf("%s*$", pattern.blank),
-		sep="", collapse=""
+		sep="",
+		collapse=""
 	)
 
 	# remove non-data row
@@ -35,7 +37,7 @@ read.spectrum <- function (
 			gsub(
 				pattern.row,
 				sprintf("\\%1.0f", j),
-				strdata.onlydata,
+				strdata.onlydata
 			)
 		)
 	}
@@ -50,5 +52,4 @@ read.spectrum <- function (
 		cols = cols,
 		data.length = data.length
 	))
-
 }
