@@ -1,5 +1,4 @@
-read.spectrum <-
-function (
+read.spectrum.file <- function (
 	fileToRead,
 	encoding = "UTF-8",
 	cols = 2,
