@@ -22,8 +22,7 @@ function(
 
 ) {
 	
-	allFile <- list.files(path)
-	allFile.notDict <- file.info(allFile)$isdir == F
-	return(allFile[allFile.notDict])
+	allFile <- list.files(path, full.names = T, pattern = "^[^.]+")
+	return(allFile)
 	
 }

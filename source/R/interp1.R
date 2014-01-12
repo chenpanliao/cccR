@@ -22,9 +22,10 @@ interp1 <- function(
 ){
 	if (method[1] == "linear"){
 		yout <- approx(x, y, xout = xout)$y
-	}
-	if (any(method[1] == c("fmm" , "natural")) && length(method) == 1){
+	} else if (any(method[1] == c("fmm" , "natural")) && length(method) == 1){
 		yout <- spline(x, y, xout = xout, method = method)$y
+	} else {
+    warning("method must be \"linear\", \"fmm\" or \"natural\"")
 	}
 
 	return(yout)
