@@ -1,5 +1,5 @@
 # read.spectrum.file.R is a R function to read spectrum file
-# Copyright (C) 2013  Chen-Pan Liao
+# Copyright (C) 2013-2014 Chen-Pan Liao
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -58,7 +58,7 @@ read.spectrum.file <- function (
 		)
 	}
 		
-	return(list(
+	r <- list(
 		outdata = outdata,
 		filename = fileToRead,
 		origin.file.content = strdata,
@@ -67,5 +67,7 @@ read.spectrum.file <- function (
 		grep.pattern = pattern.row,
 		cols = cols,
 		data.length = data.length
-	))
+	)
+	class(r) <- "spectrum"
+	return(r)
 }
