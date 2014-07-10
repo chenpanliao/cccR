@@ -68,6 +68,5 @@ read.spectrum.file <- function (
 		cols = cols,
 		data.length = data.length
 	)
-	class(r) <- "spectrum"
 	return(r)
 }
