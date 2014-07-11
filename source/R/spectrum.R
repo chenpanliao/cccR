@@ -49,6 +49,7 @@ setMethod(
 			stop("the file must not be a folder.")
 		}
 		
+		cat("Reading ", filename, "...", "\n", sep="")
 		tmp <- read.spectrum.file(filename)
 		obj <- new("spectrum")
 		obj@baseName <- basename(filename)
@@ -57,6 +58,8 @@ setMethod(
 		obj@rawString <- tmp$origin.file.content
 		obj@outData <- tmp$outdata
 		obj@rowNotUsed <- tmp$row.not.used
+
+		cat("Analyzing ", filename, "...", "\n", sep="")
 		obj@interpIndex <- c(interp[1], interp[2], interp[3])
 		interpIndex <- seq(obj@interpIndex[1], obj@interpIndex[2], obj@interpIndex[3])
 		obj@outDataInterped <- cbind(
@@ -70,9 +73,38 @@ setMethod(
 )
 
 
+## method: show
+setMethod(
+	"show",
+	signature(object = "spectrum"),
+	function(object){
+		cat("File:", object@fullName, "\n", sep="")
+		cat(
+			"Interped index: from ", object@interpIndex[1], 
+			" to ", object@interpIndex[2], 
+			" by ", object@interpIndex[3], "\n", sep=""
+		)
+		cat("Summary:\n")
+		print(summary(object@outDataInterped[,2]))
+	}
+)
 
-####### newSpectrum("sdata.txt")
 
+## method: plot
+setMethod(
+	"plot",
+	"spectrum",
+	definition = function(x, y, ...){
+		matplot(
+			x@outDataInterped[,1], x@outDataInterped[,2],
+			type = "l", cex.axis = 0.8, xlab = "", ylab = ""
+		)
+	}
+)
+
+x <- newSpectrum("/Users/apan/Documents/workshop/octave/cc/cc-20101114/results/20140103T230337/core_data/diurnalIllumination.txt", c(300,700,0.1))
+x
+plot(x)
 
 
 
@@ -100,36 +132,8 @@ setMethod(
 
 
 
-## method: getRawString
-#setGeneric("getRawString", function(.) standardGeneric("getRawString"))
-#setMethod(
-#	"getRawString",
-#	"spectrum",
-#	function(object) {
-#		object@baseName
-#	}
-#)
 
 
-
-## method: plot
-#setMethod(
-#	"plot",
-#	"spectrum",
-#	function(object){
-#		plot(object@outData[,1], object@outData[,2])
-#	}
-#)
-
-
-## method: show
-#setMethod(
-#	"show",
-#	"spectrum",
-#	function(object){
-#		cat("baseName:", object@baseName)
-#	}
-#)
 
   
 
