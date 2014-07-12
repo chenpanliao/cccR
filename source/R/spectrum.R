@@ -10,22 +10,6 @@ setClass(
 		interpIndex = "numeric",
 		outDataInterped = "matrix"
 	)
-#	,
-#	prototype(
-#		interpIndex = c(300, 700, 0.2)
-#	)
-#	,
-#	validity = function(object){
-#		if(length(object@baseName) != 1L) {
-#			stop("the number of baseName must be 1.")
-#		}else if(!file.exists(object@baseName)) {
-#			stop("the file baseName does not exist.")
-#		}else if(file.info(object@baseName)$isdir) {
-#			stop("the file baseName must not be a folder.")
-#		}else{
-#			return(T)
-#		}
-#	}
 )
 
 ## constructors
@@ -129,12 +113,3 @@ plot(x)
 #		return(.Object)
 #	}
 #)
-
-
-
-
-
-
-  
-
-#x <- new("spectrum", baseName = "asdfg.asdgas.sd")
