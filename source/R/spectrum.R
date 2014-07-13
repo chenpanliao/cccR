@@ -1,3 +1,19 @@
+# spectrum.R is a R S4 class to read spectrum file
+# Copyright (C) 2014 Chen-Pan Liao
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see {http://www.gnu.org/licenses/}.
+
 setClass(
 	"spectrum",
 	representation(
@@ -86,6 +102,8 @@ setMethod(
 	}
 )
 
+
+####### testing
 x <- newSpectrum("/Users/apan/Documents/workshop/octave/cc/cc-20101114/results/20140103T230337/core_data/diurnalIllumination.txt", c(300,700,0.1))
 x
 plot(x)
