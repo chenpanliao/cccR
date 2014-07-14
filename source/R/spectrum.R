@@ -1,4 +1,4 @@
-# spectrum.R is a R S4 class to read spectrum file
+# spectrum.R is a R S4 class for a spectrum file
 # Copyright (C) 2014 Chen-Pan Liao
 #
 # This program is free software: you can redistribute it and/or modify
@@ -30,10 +30,8 @@ setClass(
 
 ## constructors
 setGeneric(
-	"newSpectrum",
-	function(filename, ...) {
-		standardGeneric("newSpectrum")
-	}
+	"newSpectrum", 
+	function(filename, ...) standardGeneric("newSpectrum")
 )
 # for filename input
 setMethod(
@@ -49,7 +47,7 @@ setMethod(
 			stop("the file must not be a folder.")
 		}
 		
-		cat("Reading ", filename, "...", "\n", sep="")
+		cat("Reading ", filename, "...", "\n", sep = "")
 		tmp <- read.spectrum.file(filename)
 		obj <- new("spectrum")
 		obj@baseName <- basename(filename)
@@ -59,7 +57,7 @@ setMethod(
 		obj@outData <- tmp$outdata
 		obj@rowNotUsed <- tmp$row.not.used
 
-		cat("Analyzing ", filename, "...", "\n", sep="")
+		cat("Analyzing ", filename, "...", "\n", sep = "")
 		obj@interpIndex <- c(interp[1], interp[2], interp[3])
 		interpIndex <- seq(obj@interpIndex[1], obj@interpIndex[2], obj@interpIndex[3])
 		obj@outDataInterped <- cbind(
