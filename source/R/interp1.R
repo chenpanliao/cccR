@@ -4,7 +4,7 @@
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# any later version.
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -25,7 +25,7 @@ interp1 <- function(
 	} else if (any(method[1] == c("fmm" , "natural")) && length(method) == 1){
 		yout <- spline(x, y, xout = xout, method = method)$y
 	} else {
-    	warning("method must be \"linear\", \"fmm\" or \"natural\"")
+    		warning("method must be \"linear\", \"fmm\" or \"natural\"")
 	}
 
 	return(yout)

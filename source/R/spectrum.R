@@ -4,7 +4,7 @@
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# any later version.
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -81,11 +81,11 @@ setMethod(
 	"show",
 	signature(object = "spectrum"),
 	function(object){
-		cat("File:", object@fullName, "\n", sep="")
+		cat("File:", object@fullName, "\n", sep = "")
 		cat(
 			"Interped index: from ", object@interpIndex[1], 
 			" to ", object@interpIndex[2], 
-			" by ", object@interpIndex[3], "\n", sep=""
+			" by ", object@interpIndex[3], "\n", sep = ""
 		)
 		cat("Summary:\n")
 		print(summary(object@outDataInterped[,2]))

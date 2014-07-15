@@ -1,10 +1,10 @@
-# read.spectrum.file.R is a R function to read spectrum file
+# read.spectrum.file.R is an R function to read spectrum file
 # Copyright (C) 2013-2014 Chen-Pan Liao
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# any later version.
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -24,7 +24,7 @@ read.spectrum.file <- function (
 ) {
 
 	# input file as a string
-	con <- file(fileToRead, "r", blocking = FALSE, encoding = encoding)
+	con <- file(fileToRead, "r", blocking = F, encoding = encoding)
 	readLines(con) -> strdata
 	close(con)
 
@@ -33,12 +33,12 @@ read.spectrum.file <- function (
 		sprintf("^%s*", pattern.blank),
 		paste(
 			rep(pattern.num, cols),
-			sep="",
+			sep = "",
 			collapse=sprintf("%s+", pattern.blank)
 		),
 		sprintf("%s*$", pattern.blank),
-		sep="",
-		collapse=""
+		sep = "",
+		collapse = ""
 	)
 
 	# remove non-data row
