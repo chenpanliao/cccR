@@ -48,15 +48,20 @@ setMethod(
 		}
 		
 		cat("Reading ", filename, "...", "\n", sep = "")
-		tmp <- read.spectrum.file(filename)
 		obj <- new("spectrum")
+
+		## 檔案名稱
 		obj@baseName <- basename(filename)
 		obj@dirName <- dirname(filename)
 		obj@fullName <- paste0(getwd(), "/", obj@dirName, "/", obj@baseName)
+
+		## 檔案內容
+		tmp <- read.spectrum.file(filename)
 		obj@rawString <- tmp$origin.file.content
 		obj@outData <- tmp$outdata
 		obj@rowNotUsed <- tmp$row.not.used
 
+		## 內插法 
 		cat("Analyzing ", filename, "...", "\n", sep = "")
 		obj@interpIndex <- c(interp[1], interp[2], interp[3])
 		interpIndex <- seq(obj@interpIndex[1], obj@interpIndex[2], obj@interpIndex[3])
