@@ -65,10 +65,7 @@ setMethod(
 		cat("Analyzing ", filename, "...", "\n", sep = "")
 		obj@interpIndex <- c(interp[1], interp[2], interp[3])
 		interpIndex <- seq(obj@interpIndex[1], obj@interpIndex[2], obj@interpIndex[3])
-		obj@outDataInterped <- cbind(
-			interpIndex,
-			interp1(obj@outData[,1], obj@outData[,2], interpIndex)
-		)
+		obj@outDataInterped <- interp1(obj@outData[,1], obj@outData[,2], interpIndex)
 		dimnames(obj@outDataInterped) <- NULL
 
 		return(obj)
@@ -108,7 +105,7 @@ setMethod(
 
 ###### TO DO: input a file which contained more than one spectra
 ####### testing
-#x <- newSpectrum("/Users/apan/Documents/workshop/octave/cc/cc-20101114/results/20140103T230337/core_data/diurnalIllumination.txt", c(300,700,0.1))
+#x <- newSpectrum("/Users/apan/Documents/workshop/octave/cc/cc-20101114/data2/paper-3.txt", c(300,700,0.1))
 #x
 #plot(x)
 

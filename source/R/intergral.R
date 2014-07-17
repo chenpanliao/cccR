@@ -39,16 +39,10 @@ function (
 	n <- length(xx)
 
 	# checking uniform grid ###################
-	xx.d <- xx[2] - xx[1]
-	xx.cal <- numeric(n)
-	for (k in 1:length(xx.cal)) {
-		xx.cal[k] <- xx[1] + (k-1) * xx.d
-	}
-	if ( !all(xx == xx.cal) ) {
-		is.uniform <- F
-		message("x is not an arithmetic sequence.")
-	} else {
-		is.uniform <- T
+	# checking uniform grid ###################
+	xx.d <- xx[2:n] - xx[1:(n-1)]
+	if (sd (xx.d) > 10^(-10)) {
+		warning ("x might not be an arithmetic sequence.")
 	}
 	
 	# area
