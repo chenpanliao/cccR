@@ -28,7 +28,6 @@ interp1 <- function(
 	} else {
     		warning("method must be \"linear\", \"fmm\" or \"natural\"")
 	}
-
 	return (cbind (xout, yout))
 }
 
