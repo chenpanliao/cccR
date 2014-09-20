@@ -105,7 +105,7 @@ setMethod(
 
 ###### TO DO: input a file which contained more than one spectra
 ####### testing
-#x <- newSpectrum("/Users/apan/Documents/workshop/octave/cc/cc-20101114/data2/paper-3.txt", c(300,700,0.1))
+#x <- newSpectrum("/Users/apan/cccR/test-data/LM-black-01-1.txt", c(300,700,0.1))
 #x
 #plot(x)
 
