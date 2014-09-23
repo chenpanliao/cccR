@@ -1,9 +1,9 @@
-# intergral.R is a R function to do intergral
+# intergral.R is an R function to do intergral
 # Copyright (C) 2013-2014  Chen-Pan Liao
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
+# the Free Software Foundation, either version 2 of the License, or
 # any later version.
 #
 # This program is distributed in the hope that it will be useful,

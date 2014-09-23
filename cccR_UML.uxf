@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>390</x>
+      <y>100</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>spectrum
+Package::cccR
+--
+-baseName: character
+-dirName: character
+-fullName: character
+-rawString: character
+-rowNotUsed: numeric
+-outData: matrix
+-outDataInterped: matrix
+-interpIndex: numeric
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
