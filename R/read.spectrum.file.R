@@ -24,49 +24,49 @@ read.spectrum.file <- function (
 ) {
 
 	# input file as a string
-	con <- file(fileToRead, "r", blocking = F, encoding = encoding)
-	readLines(con) -> strdata
-	close(con)
+	con <- file (fileToRead, "r", blocking = F, encoding = encoding)
+	readLines (con) -> strdata
+	close (con)
 
 	# create pattern according to pattern.blank and pattern.num
-	pattern.row <- paste(
-		sprintf("^%s*", pattern.blank),
-		paste(
-			rep(pattern.num, cols),
+	pattern.row <- paste (
+		sprintf ("^%s*", pattern.blank),
+		paste (
+			rep (pattern.num, cols),
 			sep = "",
-			collapse=sprintf("%s+", pattern.blank)
+			collapse=sprintf ("%s+", pattern.blank)
 		),
-		sprintf("%s*$", pattern.blank),
+		sprintf ("%s*$", pattern.blank),
 		sep = "",
 		collapse = ""
 	)
 
 	# remove non-data row
-	is.number.row <- regexpr(pattern.row, strdata) == T
+	is.number.row <- regexpr (pattern.row, strdata) == T
 	strdata.onlydata <- strdata[is.number.row]
 	
 	# fetch data
-	data.length <- length(strdata.onlydata)
-	outdata <- matrix(nrow = data.length, ncol = cols)
+	data.length <- length (strdata.onlydata)
+	outdata <- matrix (nrow = data.length, ncol = cols)
 	for (j in 1:cols) {
-		outdata[,j] <- as.numeric(
-			gsub(
+		outdata[,j] <- as.numeric (
+			gsub (
 				pattern.row,
-				sprintf("\\%1.0f", j),
+				sprintf ("\\%1.0f", j),
 				strdata.onlydata
 			)
 		)
 	}
 		
-	r <- list(
+	r <- list (
 		outdata = outdata,
 		filename = fileToRead,
 		origin.file.content = strdata,
-		row.not.used = which(is.number.row == F),
+		row.not.used = which (is.number.row == F),
 		encoding = encoding,
 		grep.pattern = pattern.row,
 		cols = cols,
 		data.length = data.length
 	)
-	return(r)
+	return (r)
 }
