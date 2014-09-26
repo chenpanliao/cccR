@@ -4,8 +4,9 @@ cccR
 License
 ----
 
-cccR is an R package focus on color contrastcalculation for behavioral
+cccR is an R package focus on color contrast calculation for behavioral
 ecologists.
+
 Copyright (C) 2013-2014  Chen-Pan Liao
 
 This program is free software: you can redistribute it and/or modify
