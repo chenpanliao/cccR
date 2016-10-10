@@ -1,4 +1,4 @@
-# smoother.R is a R function to smooth a line
+# smooth.length.R is a R function to smooth a line
 # Copyright (C) 2013  Chen-Pan Liao
 #
 # This program is free software: you can redistribute it and/or modify
@@ -14,9 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see {http://www.gnu.org/licenses/}.
 
-smoother <-
-function (
-	x, y, smoother = 0L
+smoother <- function (
+	x, y, smooth.length = 0L
 ) {
 
 	# NA omit
@@ -31,7 +30,9 @@ function (
 	if (length(x) < 2 | length(y) < 2) {
 		stop("Length of x and y must larger than 1")
 	}
-
+	if (! is.integer(smooth.length)) {
+		stop("smooth.length must be a ingerger (e.g., 3L)")
+	}
 	# sort
 	x.index <- order(x)
 	xx <- x[x.index]
@@ -43,15 +44,17 @@ function (
 	if (sd (xx.d) > 10^(-10)) {
 		warning ("x might not be an arithmetic sequence.")
 	}
-	
+
 	# smooth
-	if (smoother > 0 & is.integer (smoother)) {
+	if (smooth.length > 0) {
 		yy.ave <- numeric (n)
-		yy.tmp <- c (rep (yy[1], smoother), yy, rep (yy[n], smoother) )
+		yy.tmp <- c (rep (yy[1], smooth.length), yy, rep (yy[n], smooth.length) )
 		for (i in 1:n) {
-			yy.ave[i] <- mean (yy.tmp[i:(smoother * 2 + i)])
+			yy.ave[i] <- mean (yy.tmp[i:(smooth.length * 2 + i)])
 		}
+	} else {
+		yy.ave <- yy
 	}
 	return ( cbind (xx, yy.ave))
-	
+
 }

@@ -30,7 +30,7 @@ setClass(
 
 ## constructors
 setGeneric(
-	"newSpectrum", 
+	"newSpectrum",
 	function(filename, ...) standardGeneric("newSpectrum")
 )
 # for filename input
@@ -38,7 +38,7 @@ setMethod(
 	"newSpectrum",
 	signature(filename = "character"),
 	function(filename, interp=c(300, 700, 0.1)) {
-		
+
 		if(length(filename) != 1L) {
 			stop("the number of baseName must be 1.")
 		}else if(!file.exists(filename)) {
@@ -46,7 +46,7 @@ setMethod(
 		}else if(file.info(filename)$isdir) {
 			stop("the file must not be a folder.")
 		}
-		
+
 		cat("Reading ", filename, "...", "\n", sep = "")
 		obj <- new("spectrum")
 
@@ -61,7 +61,7 @@ setMethod(
 		obj@outData <- tmp$outdata
 		obj@rowNotUsed <- tmp$row.not.used
 
-		## 內插法 
+		## 內插法
 		cat("Analyzing ", filename, "...", "\n", sep = "")
 		obj@interpIndex <- c(interp[1], interp[2], interp[3])
 		interpIndex <- seq(obj@interpIndex[1], obj@interpIndex[2], obj@interpIndex[3])
@@ -80,8 +80,8 @@ setMethod(
 	function(object){
 		cat("File:", object@fullName, "\n", sep = "")
 		cat(
-			"Interped index: from ", object@interpIndex[1], 
-			" to ", object@interpIndex[2], 
+			"Interped index: from ", object@interpIndex[1],
+			" to ", object@interpIndex[2],
 			" by ", object@interpIndex[3], "\n", sep = ""
 		)
 		cat("Summary:\n")

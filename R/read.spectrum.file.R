@@ -44,7 +44,7 @@ read.spectrum.file <- function (
 	# remove non-data row
 	is.number.row <- regexpr(pattern.row, strdata) == T
 	strdata.onlydata <- strdata[is.number.row]
-	
+
 	# fetch data
 	data.length <- length(strdata.onlydata)
 	outdata <- matrix(nrow = data.length, ncol = cols)
@@ -57,7 +57,7 @@ read.spectrum.file <- function (
 			)
 		)
 	}
-		
+
 	r <- list(
 		outdata = outdata,
 		filename = fileToRead,
