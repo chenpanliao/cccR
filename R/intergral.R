@@ -18,51 +18,44 @@
 ## 梯形法
 
 intergral <-
-function (
-	x, y
-) {
-	# check length
-	if (length (x) < 2 | length (y) < 2 | length(x) != length(y)) {
-		stop ("Length of x and y must be equal and larger than 1.")
-	}
+  function (x, y) {
+    # check length
+    if (length (x) < 2 | length (y) < 2 | length(x) != length(y)) {
+      stop ("Length of x and y must be equal and larger than 1.")
+    }
+    
+    n <- length(y)
+    y.up <- y[-1]
+    y.low <- y[-n]
+    x.up <- x[-1]
+    x.low <- x[-n]
+    delta <- x.up - x.low
+    area <- sum((y.up + y.low) * delta / 2)
+    return(area)
+  }
 
-	n <- length(y)
-	y.up <- y[-1]
-	y.low <- y[-n]
-	x.up <- x[-1]
-	x.low <- x[-n]
-	delta <- x.up - x.low
-	area <- sum( (y.up + y.low) * delta / 2 )
-	return(area)
-}
-
-## 缺點：切太多份會沒辦法算
-intergral <-
-function (
-	x, y
-) {
-
-	# NA omit
-	temp <- na.omit(data.frame(x, y))
-
-	# check class and mode
-	if (class (temp) != "matrix" | mode (temp) != "numeric" )
-
-	# check length
-	if (nrow (temp) < 2) {
-		stop ("Length of x and y must be larger than 1")
-	}
-
-	# sort
- 	temp <- temp[order(temp$x), ]
-
-	# area
-	area <- integrate (
-		approxfun(temp$x, temp$y, rule = 2) ,
-		min (temp$x),
-		max (temp$x)
-	)$value
-
-	return (area)
-
-}
+# ## 缺點：切太多份會沒辦法算
+# intergral <-
+#   function (x, y) {
+#     # NA omit
+#     temp <- na.omit(data.frame(x, y))
+#     
+#     # check class and mode
+#     if (class (temp) != "matrix" | mode (temp) != "numeric")
+#       
+#       # check length
+#       if (nrow (temp) < 2) {
+#         stop ("Length of x and y must be larger than 1")
+#       }
+#     
+#     # sort
+#     temp <- temp[order(temp$x),]
+#     
+#     # area
+#     area <- integrate (approxfun(temp$x, temp$y, rule = 2) ,
+#                        min (temp$x),
+#                        max (temp$x))$value
+#     
+#     return (area)
+#     
+#   }
