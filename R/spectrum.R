@@ -1,3 +1,6 @@
+## delete later
+
+
 # spectrum.R is a R S4 class for a spectrum file
 # Copyright (C) 2014 Chen-Pan Liao
 #
