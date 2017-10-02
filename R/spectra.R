@@ -16,6 +16,50 @@
 
 
 
+## smoother
+smoother <-
+	function (x, y, smooth.length = 0L) {
+		# NA omit
+		temp <- na.omit(data.frame(x, y))
+		x <- temp$x
+		y <- temp$y
+		
+		# check length
+		if (length(x) != length(y)) {
+			stop("Length of x and y must be equal.")
+		}
+		if (length(x) < 2 | length(y) < 2) {
+			stop("Length of x and y must larger than 1")
+		}
+		if (!is.integer(smooth.length)) {
+			stop("smooth.length must be a ingerger (e.g., 3L)")
+		}
+		# sort
+		x.index <- order(x)
+		xx <- x[x.index]
+		yy <- y[x.index]
+		n <- length(xx)
+		
+		# checking uniform grid ###################
+		xx.d <- xx[2:n] - xx[1:(n - 1)]
+		if (sd (xx.d) > 10 ^ (-10)) {
+			warning ("x might not be an arithmetic sequence.")
+		}
+		
+		# smooth
+		if (smooth.length > 0) {
+			yy.ave <- numeric (n)
+			yy.tmp <-
+				c (rep (yy[1], smooth.length), yy, rep (yy[n], smooth.length))
+			for (i in 1:n) {
+				yy.ave[i] <- mean (yy.tmp[i:(smooth.length * 2 + i)])
+			}
+		} else {
+			yy.ave <- yy
+		}
+		return (cbind (xx, yy.ave))
+	}
+
 
 ## interpolation
 interp1 <-
@@ -90,6 +134,7 @@ file.phraser <-
 
 
 
+## S3 class: spectra
 ## main method
 read.spectra <-
 	function(filename,
@@ -174,10 +219,10 @@ plot.spectra <- function(x, y, ...) {
 }
 
 
+## method: mean
+
+
 
 # obj <- read.spectra("../test-data/LM-black-01-1.txt", smooth.length = 10L)
 # plot(obj)
 # obj
-
-
-
