@@ -93,7 +93,7 @@ read.spectra.file <- function (
 }
 
 
-## S4 method
+## main method
 read.spectra <- function(
   filename,
 	encoding = "UTF-8",
@@ -142,7 +142,6 @@ read.spectra <- function(
 
   class(obj) <- "spectra"
 	return(obj)
-
 }
 
 ## method: print
@@ -172,3 +171,6 @@ plot.spectra <- function(x, y, ...){
 # obj <- read.spectra("../test-data/LM-black-01-1.txt", smooth.length = 10L)
 # plot(obj)
 # obj
+
+
+
