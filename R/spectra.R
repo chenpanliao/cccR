@@ -174,7 +174,10 @@ read.spectra <-
 		interpIndex <-
 			seq(obj$interpIndex[1], obj$interpIndex[2], obj$interpIndex[3])
 		outDataInterp <-
-			interp1(obj$outData[, 1], obj$outData[, 2], interpIndex, method = interp.method)
+			interp1(obj$outData[, 1], 
+							obj$outData[, 2], 
+							interpIndex, 
+							method = interp.method)
 		dimnames(outDataInterp) <- NULL
 		
 		## smoother
@@ -189,40 +192,76 @@ read.spectra <-
 	}
 
 ## method: print
-print.spectra <- function(object) {
-	cat("File:", object$fullName, "\n", sep = "")
-	cat(
-		"Interped index: from ",
-		object$interpIndex[1],
-		" to ",
-		object$interpIndex[2],
-		" by ",
-		object$interpIndex[3],
-		"\n",
-		sep = ""
-	)
-	cat("Smooth length:", object$smooth.length, "\n", sep = "")
-	cat("Summary:\n")
-	print(summary(object$spectra))
-}
+print.spectra <-
+	function(object) {
+		cat("File:", object$fullName, "\n", sep = "")
+		cat(
+			"Interped index: from ",
+			object$interpIndex[1],
+			" to ",
+			object$interpIndex[2],
+			" by ",
+			object$interpIndex[3],
+			"\n",
+			sep = ""
+		)
+		cat("Smooth length:", object$smooth.length, "\n", sep = "")
+		cat("Summary:\n")
+		print(summary(object$spectra))
+	}
 
 ## method: plot
-plot.spectra <- function(x, y, ...) {
-	par(mar = c(3, 3, 0, 0) + 0.1, cex = 10 / 12)
-	matplot(
-		x$wavelength,
-		x$spectra,
-		type = "l",
-		xlab = "",
-		ylab = ""
-	)
-}
-
-
-## method: mean
-
-
+plot.spectra <-
+	function(x, y, ...) {
+		par(mar = c(3, 3, 0, 0) + 0.1, cex = 10 / 12)
+		matplot(
+			x$wavelength,
+			x$spectra,
+			type = "l",
+			xlab = "",
+			ylab = ""
+		)
+	}
 
 # obj <- read.spectra("../test-data/LM-black-01-1.txt", smooth.length = 10L)
 # plot(obj)
 # obj
+
+
+
+
+
+
+
+
+
+
+
+## S3 object: spectraList
+read.spectrum <-
+	function(files, ...){
+		# vadilation
+		if (length(files) < 2L) {
+			stop("the number of filename must greater than 1.")
+		}
+		
+		res <- vector("list", length = length(files))
+		for(i in 1:length(files)) {
+			res[[i]] <- read.spectra("../test-data/LM-black-01-1.txt", ...)
+		}
+		class(res) <- "spectraList"
+		return(res)
+	}
+
+mean.spectraList <-
+	function(x) {
+		wavelength <- 
+			do.call("rbind", x)[, "wavelength"][[1]]
+		spectra.average <-
+			rowMeans(do.call("cbind", do.call("rbind", x)[, "spectra"]))
+		cbind(wavelength, spectra.average)
+	}
+
+# obj <- read.spectrum(rep("../test-data/LM-black-01-1.txt", 2), smooth.length = 10L)
+# mean(obj)
+
