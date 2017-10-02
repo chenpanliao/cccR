@@ -16,7 +16,6 @@
 
 
 ## 梯形法
-
 intergral <-
   function (x, y) {
     # check length

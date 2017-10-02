@@ -16,13 +16,7 @@
 
 
 list.all.files <-
-function(
-
-	path = "."
-
-) {
-	
-	allFile <- list.files(path, full.names = T, pattern = "^[^.]+")
-	return(allFile)
-	
-}
+	function(path = ".", patter = "^[^.]+") {
+		allFile <- list.files(path, full.names = T, pattern = pattern)
+		return(allFile)
+	}

@@ -14,6 +14,29 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see {http://www.gnu.org/licenses/}.
 
+
+
+## interpolation
+interp1 <- function(
+	x,
+	y,
+	xout,
+	method = c("linear", "fmm", "natural"),
+	smoother = 0L
+){
+	if (method[1] == "linear"){
+		yout <- approx (x, y, xout)$y
+	} else if (any(method[1] == c ("fmm" , "natural")) && length (method) == 1){
+		yout <- spline(x, y, xout, method = method)$y
+	} else {
+    		warning("method must be \"linear\", \"fmm\" or \"natural\"")
+	}
+	return (cbind (xout, yout))
+}
+
+
+
+## spectra file phraser
 read.spectra.file <- function (
 	fileToRead,
 	encoding = "UTF-8",
@@ -57,7 +80,7 @@ read.spectra.file <- function (
 		)
 	}
 
-	r <- list(
+	list(
 		outdata = outdata,
 		filename = fileToRead,
 		origin.file.content = strdata,
@@ -67,9 +90,10 @@ read.spectra.file <- function (
 		cols = cols,
 		data.length = data.length
 	)
-	return(r)
 }
 
+
+## S4 method
 read.spectra <- function(
   filename,
 	encoding = "UTF-8",
@@ -139,7 +163,7 @@ plot.spectra <- function(x, y, ...){
 	par(mar = c(3,3,0,0) + 0.1, cex = 10/12)
 	matplot(
 		x$wavelength, x$spectra,
-		type = "l", xlab = "", ylab = "",
+		type = "l", xlab = "", ylab = ""
 	)
 }
 
