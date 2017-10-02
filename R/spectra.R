@@ -238,7 +238,7 @@ plot.spectra <-
 
 
 ## S3 object: spectraList
-read.spectrum <-
+read.spectraList <-
 	function(files, ...){
 		# vadilation
 		if (length(files) < 2L) {
@@ -262,6 +262,6 @@ mean.spectraList <-
 		cbind(wavelength, spectra.average)
 	}
 
-# obj <- read.spectrum(rep("../test-data/LM-black-01-1.txt", 2), smooth.length = 10L)
+# obj <- read.spectraList(rep("../test-data/LM-black-01-1.txt", 2), smooth.length = 10L)
 # mean(obj)
 
