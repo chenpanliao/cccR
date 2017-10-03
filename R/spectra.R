@@ -247,7 +247,7 @@ read.spectraList <-
 		
 		res <- vector("list", length = length(files))
 		for(i in 1:length(files)) {
-			res[[i]] <- read.spectra("../test-data/LM-black-01-1.txt", ...)
+			res[[i]] <- read.spectra(files[i], ...)
 		}
 		class(res) <- "spectraList"
 		return(res)
